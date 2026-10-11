@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feliz cumpleaños, Sami</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#fff1ec; --bg2:#ffd9e2; --bg3:#f7b6cb;
+  --ink:#4a1630; --muted:#8a5a70; --accent:#e23c6b; --accent2:#ff7a59; --gold:#ffb703;
+  --card:rgba(255,255,255,.66); --line:rgba(255,255,255,.85); --soft:rgba(226,60,107,.10);
+  --shadow:0 30px 80px -20px rgba(150,30,80,.35);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg1:#1d0b1a; --bg2:#2d1030; --bg3:#4a1740; --ink:#ffe8ef; --muted:#d9a5bb; --accent:#ff6f9c; --accent2:#ffa07a;
+  --card:rgba(255,255,255,.07); --line:rgba(255,255,255,.14); --soft:rgba(255,111,156,.14); --shadow:0 30px 80px -20px rgba(0,0,0,.6);}}
+:root[data-theme="dark"]{
+  --bg1:#1d0b1a; --bg2:#2d1030; --bg3:#4a1740; --ink:#ffe8ef; --muted:#d9a5bb; --accent:#ff6f9c; --accent2:#ffa07a;
+  --card:rgba(255,255,255,.07); --line:rgba(255,255,255,.14); --soft:rgba(255,111,156,.14); --shadow:0 30px 80px -20px rgba(0,0,0,.6);}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);min-height:100vh;
+  background:radial-gradient(900px 600px at 15% 0%,var(--bg3),transparent 60%),radial-gradient(800px 600px at 100% 100%,var(--bg2),transparent 60%),var(--bg1);
+  background-color:var(--bg1);display:flex;align-items:center;justify-content:center;padding:20px;overflow-x:hidden}
+.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.bg span{position:absolute;bottom:-60px;opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0) rotate(-8deg);opacity:0}15%{opacity:.6}100%{transform:translateY(-115vh) rotate(12deg);opacity:0}}
+.card{position:relative;z-index:1;width:100%;max-width:440px;padding:30px 22px;background:var(--card);border:1px solid var(--line);
+  border-radius:32px;backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);box-shadow:var(--shadow);text-align:center}
+.view[hidden]{display:none}
+h1,h2{font-family:'Fraunces',serif;font-style:italic;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+h1{font-size:clamp(2.2rem,10vw,3rem);margin:14px 0 10px;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:1.45rem}
+.lead{color:var(--muted);line-height:1.55;margin-bottom:20px}
+.sub{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
+/* foto con marco */
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:grid;place-items:center;font-size:2rem}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero{width:132px;height:132px;margin:0 auto;border-radius:50%;border:5px solid #fff;box-shadow:0 14px 34px -10px var(--accent);animation:beat 2.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.opt{width:100%;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;padding:14px;margin-top:10px;border-radius:20px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);font:inherit;transition:transform .15s,border-color .15s}
+.opt:hover{border-color:var(--accent)}.opt:active{transform:scale(.98)}
+.opt .ic{width:46px;height:46px;flex:none;border-radius:15px;display:grid;place-items:center;font-size:1.5rem;background:var(--soft)}
+.opt b{display:block}.opt small{color:var(--muted);font-size:.85rem}
+.btn{width:100%;padding:15px;border:0;border-radius:18px;cursor:pointer;font:inherit;font-weight:700;color:#fff;margin-top:12px;
+  background:linear-gradient(120deg,var(--accent),var(--accent2));box-shadow:0 12px 26px -10px var(--accent);transition:transform .15s}
+.btn:active{transform:scale(.98)}
+.back{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.pill{font-weight:700;font-size:.9rem;padding:8px 14px;border-radius:999px;background:var(--soft)}
+.bar{height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+/* pastel */
+.cake{width:210px;margin:40px auto 12px;position:relative}
+.candles{display:flex;justify-content:center;gap:16px;height:48px;align-items:flex-end}
+.candle{width:12px;height:34px;border-radius:4px;background:repeating-linear-gradient(45deg,#fff 0 6px,var(--accent) 6px 12px);position:relative;cursor:pointer;border:0;padding:0}
+.flame{position:absolute;left:50%;top:-20px;width:12px;height:18px;margin-left:-6px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  background:radial-gradient(circle at 50% 70%,#fff3b0,var(--gold) 60%,#ff7a00);box-shadow:0 0 14px 4px rgba(255,183,3,.55);animation:flick .25s infinite alternate;transform-origin:50% 100%}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.88,1.08) rotate(3deg)}}
+.candle.off .flame{display:none}
+.l1,.l2{border-radius:14px;margin:0 auto}
+.l1{width:62%;height:42px;background:linear-gradient(#fff,#ffe3ec);border:2px solid var(--accent)}
+.l2{width:100%;height:56px;margin-top:-2px;background:linear-gradient(var(--accent),var(--accent2))}
+.plate{width:120%;height:10px;margin:0 -10% ;border-radius:99px;background:rgba(255,255,255,.8);box-shadow:0 6px 12px -4px rgba(0,0,0,.2)}
+.wish{min-height:48px;margin-top:14px;font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:var(--accent)}
+/* juego */
+#arena{position:relative;height:340px;border-radius:24px;overflow:hidden;touch-action:none;user-select:none;background:linear-gradient(180deg,transparent,var(--soft));border:1px solid var(--line)}
+#basket{position:absolute;bottom:8px;left:0;width:64px;height:48px;display:grid;place-items:center;font-size:2.3rem;will-change:transform}
+.item{position:absolute;top:0;left:0;font-size:1.7rem;will-change:transform}
+#over{position:absolute;inset:0;display:grid;place-content:center;gap:10px;padding:24px;background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#over[hidden]{display:none}
+.hint{color:var(--muted);font-size:.8rem;margin-top:12px}
+/* trivia */
+.q{margin:18px 0 6px;text-align:left}
+.ans{width:100%;text-align:left;padding:15px 16px;margin-top:10px;border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer;transition:all .2s}
+.ans:hover{border-color:var(--accent)}
+.ans.ok{background:var(--soft);border-color:var(--accent);transform:scale(1.02)}
+.ans.no{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{min-height:24px;margin-top:12px;color:var(--accent);font-weight:700}
+/* galería */
+.polaroid{width:78%;margin:6px auto 0;padding:10px 10px 14px;background:#fff;border-radius:6px;box-shadow:0 18px 36px -14px rgba(0,0,0,.35);transform:rotate(-2deg);transition:transform .3s}
+.polaroid .ph{aspect-ratio:1/1;border-radius:3px}
+.cap{margin-top:10px;font-family:'Fraunces',serif;font-style:italic;color:#4a1630;font-size:1rem;min-height:2.4em}
+.nav{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:16px}
+.nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+/* carta */
+.letter{margin:18px 0 6px;padding:20px;border-radius:22px;text-align:left;line-height:1.65;background:var(--soft);border:1px solid var(--line);white-space:pre-line}
+.letter .to{font-family:'Fraunces',serif;font-style:italic;font-weight:700;color:var(--accent);font-size:1.1rem;display:block;margin-bottom:6px}
+.letter .sig{display:block;margin-top:10px;font-family:'Fraunces',serif;font-style:italic;color:var(--accent);text-align:right}
+.confetti{position:fixed;top:-30px;z-index:5;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){.bg,.confetti{display:none}.hero,.flame{animation:none}}
+#mus{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;z-index:10;display:flex;flex-direction:column;gap:10px}
+#mus[hidden]{display:none}
+#mus button,#panel button{font:inherit;cursor:pointer;color:var(--ink)}
+#mus button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:1.2rem;box-shadow:0 8px 20px -8px rgba(150,30,80,.4)}
+#panel{position:fixed;top:0;right:0;bottom:0;z-index:12;width:min(320px,86vw);padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px);
+  background:var(--bg1);border-left:1px solid var(--line);box-shadow:-20px 0 50px -20px rgba(150,30,80,.4);transform:translateX(105%);transition:transform .3s;overflow-y:auto}
+#panel.open{transform:none}
+.phead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.phead b{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--accent)}
+#pClose{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card)}
+#now{color:var(--muted);font-size:.9rem;min-height:2.6em;margin-bottom:8px}
+.ctl{display:flex;gap:10px;justify-content:center;margin-bottom:14px}
+.ctl button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:1.1rem}
+.ctl #pToggle{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;border:0}
+#tracks{list-style:none;padding:0;display:grid;gap:8px}
+#tracks button{width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+#tracks button.on{border-color:var(--accent);background:var(--soft);font-weight:700}
+#tracks button.bad{opacity:.5}
+</style>
+</head>
+<body>
+<div class="bg" id="bg" aria-hidden="true"></div>
+<div id="mus" hidden>
+  <button id="mPlay" aria-label="Reproducir o pausar">🔇</button>
+  <button id="mList" aria-label="Abrir lista de canciones">🎵</button>
+</div>
+<aside id="panel" aria-label="Playlist">
+  <div class="phead"><b>Nuestra playlist 🎶</b><button id="pClose" aria-label="Cerrar">✕</button></div>
+  <p id="now"></p>
+  <div class="ctl"><button id="pPrev" aria-label="Anterior">⏮</button><button id="pToggle" aria-label="Reproducir o pausar">▶</button><button id="pNext" aria-label="Siguiente">⏭</button></div>
+  <ol id="tracks"></ol>
+</aside>
+
+<main class="card">
+  <!-- MENÚ -->
+  <section class="view" id="menu">
+    <div class="ph hero" id="heroPh">🎂</div>
+    <p class="sub" style="margin-top:18px">Hoy es tu día</p>
+    <h1 id="title">Feliz cumpleaños</h1>
+    <p class="lead" id="intro"></p>
+    <button class="opt" onclick="startCake()"><span class="ic">🎂</span><span><b>Tu pastel</b><small>Sopla las velas y pide un deseo</small></span></button>
+    <button class="opt" onclick="startCatch()"><span class="ic">🎁</span><span><b>Atrapa los regalos</b><small>Consigue 10 en 30 segundos</small></span></button>
+    <button class="opt" onclick="startTrivia()"><span class="ic">💌</span><span><b>Trivia de nuestra historia</b><small>Sin presión, todas suman</small></span></button>
+    <button class="opt" onclick="startGallery()"><span class="ic">📸</span><span><b>Mi mundo</b><small>Fotos que me hacen feliz y quiero compartirte las</small></span></button>
+  </section>
+
+  <!-- PASTEL -->
+  <section class="view" id="cake" hidden>
+    <div class="top"><button class="back" onclick="toMenu()">Volver</button><span class="pill">🎂 Tu pastel</span></div>
+    <div class="cake">
+      <div class="candles" id="candles"></div>
+      <div class="l1"></div><div class="l2"></div><div class="plate"></div>
+    </div>
+    <p class="wish" id="wish">Toca las velas o sopla desde allá 💨</p>
+    <button class="btn" id="blowBtn" onclick="blow()">Soplar 💨</button>
+  </section>
+
+  <!-- JUEGO 1 -->
+  <section class="view" id="catch" hidden>
+    <div class="top">
+      <button class="back" onclick="toMenu()">Volver</button>
+      <span class="pill">🎁 <span id="score">0</span>/10</span>
+      <span class="pill"><span id="time">30</span> s</span>
+    </div>
+    <div class="bar"><i id="prog"></i></div>
+    <div id="arena">
+      <div id="basket">🧺</div>
+      <div id="over" hidden>
+        <h2>¡Casi!</h2>
+        <p class="lead" style="margin:0">Te faltaron unos pocos regalos.</p>
+        <button class="btn" onclick="startCatch()">Intentar de nuevo</button>
+      </div>
+    </div>
+    <p class="hint">Arrastra el dedo o usa las flechas ← → para mover la cesta.</p>
+  </section>
+
+  <!-- JUEGO 2 -->
+  <section class="view" id="trivia" hidden>
+    <div class="top"><button class="back" onclick="toMenu()">Volver</button><span class="pill" id="tp"></span></div>
+    <div class="bar"><i id="tbar"></i></div>
+    <h2 class="q" id="tq"></h2>
+    <div id="ta"></div>
+    <p class="fb" id="fb"></p>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="view" id="gallery" hidden>
+    <div class="top"><button class="back" onclick="toMenu()">Volver</button><span class="pill" id="gp"></span></div>
+    <div class="polaroid" id="pol"><div class="ph" id="gph">📷</div><p class="cap" id="gcap"></p></div>
+    <div class="nav"><button onclick="gal(-1)" aria-label="Anterior">←</button><button onclick="gal(1)" aria-label="Siguiente">→</button></div>
+  </section>
+
+  <!-- VICTORIA / CARTA -->
+  <section class="view" id="win" hidden>
+    <div class="ph hero" id="winPh">🎉</div>
+    <h1 style="font-size:2.2rem">¡Lo lograste, mi amor!</h1>
+    <div class="letter"><span class="to" id="lTo"></span><span id="lBody"></span><span class="sig" id="lSig"></span></div>
+    <button class="btn" onclick="toMenu()">Volver al menú</button>
+  </section>
+</main>
+
+<script>
+/* ============ ✏️ EDITA SOLO ESTA PARTE ============ */
+const CONFIG = {
+  name: "Mi Sami",
+  from: "Dani",
+  intro: "Aunque nos separen los kilómetros, quise estar contigo hoy. Elige una sorpresa.",
+  playlist: [                       // tus canciones (déjala vacía [] si no quieres música)
+    {title:"i'm missing you", src:"I′m Missing You.mp3"},
+    {title:"POV te re enamoraste mal", src:"POV te re enamoraste mal.mp3"},
+    {title:"Robleis - No Estoy Exagerando", src:"Robleis - No Estoy Exagerando (Visualizer).mp3"}
+  ],
+  heroPhoto: "obra de arte.jpg",  // foto redonda del menú
+  letterPhoto: "mi princesa preciosa.jpg",  // foto de la carta final
+  photos: [                         // agrega o quita las que quieras
+    {src:"Mi niña hermosa.jpg", cap:"Mira que bellesa"},
+    {src:"mi reina blan y negro.jpg", cap:"Mira que obra de arte"},
+    {src:"MI reina preciosa.jpg", cap:"Mira que hermosura"},
+    {src:"mi vida fle.jpg", cap:"Amo esta foto jsjs"}
+  ],
+  wish: "Que este año nos acerque muchísimo 💖",
+  letter: "Eres mi mundo.\n Te adoro mi amor te amo mucho.\n\nLa distancia no cambia lo que siento: si bien no puedo abrazarte ni besarte, hare todo lo posible para que lo nuestro funcione, Te amo mi amor \n Te amo muchisimo . Feliz cumpleaños, mi Reina.",
+  // a = posición de la respuesta correcta (empieza en 0)
+  questions: [
+    {q:"¿Cual es nuestro Youtuber favorito?", o:["Robleis","HolaSoyGerman","ElRubius","Carre"], a:0},
+    {q:"¿Nuestro anime favorito?", o:["Kamisama Hajimemashita","Naruto","Yamada-kun to 7-nin no Majo","Demon Slayer"], a:1},
+    {q:"¿Que cosa mas amo de ti?", o:["Tu pelo","sonrisa","TODO DE TI","Todas las anteriores"], a:3}
+  ]
+};
+/* ================================================== */
+
+const $ = id => document.getElementById(id);
+const views = ['menu','cake','catch','trivia','gallery','win'];
+function show(id){ views.forEach(v => $(v).hidden = v !== id); }
+
+// Pone una foto dentro de un contenedor .ph (si no existe el archivo, queda el emoji)
+function setPhoto(el, src){
+  el.querySelector('img')?.remove();
+  if(!src) return;
+  const im = new Image(); im.alt = ''; im.onerror = () => im.remove(); im.src = src; el.appendChild(im);
+}
+
+// Inicio
+$('title').textContent = `Feliz cumpleaños, ${CONFIG.name}`;
+document.title = `Feliz cumpleaños, ${CONFIG.name}`;
+$('intro').textContent = CONFIG.intro;
+setPhoto($('heroPh'), CONFIG.heroPhoto);
+
+// Fondo de globos y corazones
+(function(){
+  const bg = $('bg'), em = ['🎈','💖','🎈','✨','🎉','💗'];
+  for(let i=0;i<16;i++){
+    const s = document.createElement('span');
+    s.textContent = em[i%em.length];
+    s.style.left = Math.random()*100+'%';
+    s.style.fontSize = (16+Math.random()*20)+'px';
+    s.style.animationDuration = (9+Math.random()*9)+'s';
+    s.style.animationDelay = (-Math.random()*14)+'s';
+    bg.appendChild(s);
+  }
+})();
+
+function confetti(n=48){
+  const em = ['💖','🎉','✨','🎁','🎈','🎊'];
+  for(let i=0;i<n;i++){
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.textContent = em[i%em.length];
+    c.style.left = Math.random()*100+'vw';
+    c.style.fontSize = (16+Math.random()*16)+'px';
+    c.style.animationDuration = (2.5+Math.random()*2.5)+'s';
+    c.style.animationDelay = (Math.random()*1.2)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),7000);
+  }
+}
+function victory(){
+  stopCatch(); show('win'); confetti();
+  setPhoto($('winPh'), CONFIG.letterPhoto);
+  $('lTo').textContent = `Para ti, ${CONFIG.name}`;
+  $('lBody').textContent = CONFIG.letter;
+  $('lSig').textContent = `— ${CONFIG.from}`;
+}
+function toMenu(){ stopCatch(); show('menu'); }
+
+// ===== Pastel =====
+let lit = 0;
+function startCake(){
+  show('cake'); lit = 5;
+  const box = $('candles'); box.innerHTML = '';
+  for(let i=0;i<5;i++){
+    const b = document.createElement('button');
+    b.className = 'candle'; b.setAttribute('aria-label','Vela');
+    b.innerHTML = '<span class="flame"></span>';
+    b.onclick = () => out(b);
+    box.appendChild(b);
+  }
+  $('wish').textContent = 'Toca las velas o sopla desde allá 💨';
+  $('blowBtn').textContent = 'Soplar 💨'; $('blowBtn').onclick = blow;
+}
+function out(b){
+  if(b.classList.contains('off')) return;
+  b.classList.add('off'); lit--;
+  if(lit === 0){
+    $('wish').textContent = CONFIG.wish; confetti(60);
+    $('blowBtn').textContent = 'Encender otra vez 🕯️'; $('blowBtn').onclick = startCake;
+  }
+}
+function blow(){
+  document.querySelectorAll('.candle:not(.off)').forEach((b,i)=> setTimeout(()=>out(b), i*180));
+}
+
+// ===== Juego 1: atrapa regalos =====
+let raf=null, items=[], score=0, left=30, last=0, spawnAt=0, bx=0, keys={};
+const arena = $('arena'), basket = $('basket');
+function setBasket(x){
+  bx = Math.max(0, Math.min(arena.clientWidth-64, x));
+  basket.style.transform = `translateX(${bx}px)`;
+}
+function startCatch(){
+  stopCatch(); show('catch');
+  score=0; left=30; last=0; spawnAt=0;
+  $('score').textContent=0; $('time').textContent=30; $('prog').style.width='0';
+  $('over').hidden = true;
+  setBasket(arena.clientWidth/2-32);
+  raf = requestAnimationFrame(tick);
+}
+function stopCatch(){
+  cancelAnimationFrame(raf); raf=null;
+  items.forEach(i=>i.el.remove()); items=[];
+}
+function tick(t){
+  if(!last) last=t;
+  const dt = Math.min((t-last)/1000, .05); last=t;
+  left -= dt; $('time').textContent = Math.max(0, Math.ceil(left));
+  if(keys.ArrowLeft) setBasket(bx-420*dt);
+  if(keys.ArrowRight) setBasket(bx+420*dt);
+  spawnAt -= dt;
+  if(spawnAt<=0){
+    spawnAt = .7;
+    const el = document.createElement('div');
+    el.className='item'; el.textContent = ['🎁','🎁','🎈','💖','🍰'][Math.floor(Math.random()*5)];
+    items.push({el,x:Math.random()*(arena.clientWidth-32),y:-34,v:150+Math.random()*90});
+    arena.appendChild(el);
+  }
+  const H = arena.clientHeight;
+  items = items.filter(it=>{
+    it.y += it.v*dt;
+    it.el.style.transform = `translate(${it.x}px,${it.y}px)`;
+    if(it.y > H-62 && it.y < H-20 && it.x > bx-22 && it.x < bx+54){
+      score++; $('score').textContent=score; $('prog').style.width = Math.min(100,score*10)+'%';
+      it.el.remove(); return false;
+    }
+    if(it.y>H){ it.el.remove(); return false; }
+    return true;
+  });
+  if(score>=10) return victory();
+  if(left<=0){
+    cancelAnimationFrame(raf); raf=null;
+    items.forEach(i=>i.el.remove()); items=[];
+    $('over').hidden=false; return;
+  }
+  raf = requestAnimationFrame(tick);
+}
+arena.addEventListener('pointermove', e => setBasket(e.clientX - arena.getBoundingClientRect().left - 32));
+arena.addEventListener('pointerdown', e => setBasket(e.clientX - arena.getBoundingClientRect().left - 32));
+addEventListener('keydown', e => { if(e.key==='ArrowLeft'||e.key==='ArrowRight'){ keys[e.key]=true; e.preventDefault(); }});
+addEventListener('keyup', e => { keys[e.key]=false; });
+
+// ===== Juego 2: trivia (siempre avanza, es un juego tierno) =====
+let qi=0;
+function startTrivia(){ qi=0; show('trivia'); loadQ(); }
+function loadQ(){
+  const Q = CONFIG.questions;
+  if(qi>=Q.length) return victory();
+  const d = Q[qi];
+  $('tp').textContent = `Pregunta ${qi+1} de ${Q.length}`;
+  $('tbar').style.width = (qi/Q.length*100)+'%';
+  $('tq').textContent = d.q; $('fb').textContent = '';
+  const box = $('ta'); box.innerHTML='';
+  d.o.forEach((txt,i)=>{
+    const b = document.createElement('button');
+    b.className='ans'; b.textContent=txt;
+    b.onclick = ()=>{
+      const all = box.querySelectorAll('button');
+      all.forEach(x=>x.disabled=true);
+      if(i===d.a){ b.classList.add('ok'); $('fb').textContent='¡Esa mi reina, tan inteligente ella! 💖'; }
+      else { b.classList.add('no'); all[d.a].classList.add('ok'); $('fb').textContent='Boba esa no es</3'; }
+      setTimeout(()=>{ qi++; loadQ(); }, 1000);
+    };
+    box.appendChild(b);
+  });
+}
+
+// ===== Galería =====
+let gi=0;
+function startGallery(){ gi=0; show('gallery'); renderG(); }
+function gal(n){ const L=CONFIG.photos.length; gi=(gi+n+L)%L; renderG(); }
+function renderG(){
+  const p = CONFIG.photos[gi];
+  $('gp').textContent = `📸 ${gi+1} / ${CONFIG.photos.length}`;
+  setPhoto($('gph'), p.src); $('gcap').textContent = p.cap;
+  $('pol').style.transform = `rotate(${gi%2?2:-2}deg)`;
+}
+
+// ===== Playlist (empieza al primer toque; se puede pausar y elegir canción) =====
+(function(){
+  const L = CONFIG.playlist || [];
+  if(!L.length) return;
+  const a = new Audio(); a.volume = .5;
+  const mus = $('mus'), panel = $('panel'), tr = $('tracks');
+  let i = 0, muted = false, started = false; const bad = new Set();
+  const btns = L.map((t,k) => {
+    const li = document.createElement('li'), b = document.createElement('button');
+    b.textContent = `${k+1}. ${t.title}`; b.onclick = () => load(k, true);
+    li.appendChild(b); tr.appendChild(li); return b;
+  });
+  function paint(){
+    const on = !a.paused;
+    $('mPlay').textContent = on ? '🔊' : '🔇'; $('pToggle').textContent = on ? '⏸' : '▶';
+    btns.forEach((b,k) => { b.classList.toggle('on', k===i); b.classList.toggle('bad', bad.has(k)); });
+    $('now').textContent = (on ? 'Sonando: ' : 'En pausa: ') + L[i].title;
+  }
+  function play(){ muted = false; return a.play().then(()=>{ started = true; }).catch(()=>{}); }
+  function load(k, go){
+    i = (k + L.length) % L.length; a.src = L[i].src; paint();
+    if(go) play();
+  }
+  a.addEventListener('play', paint); a.addEventListener('pause', paint);
+  mus.hidden = false;   // visibles desde el inicio (iPhone no precarga audio); se ocultan solo si NINGUNA canción carga
+  a.addEventListener('ended', () => load(i+1, true));
+  a.addEventListener('error', () => {
+    bad.add(i); paint();
+    if(bad.size >= L.length){ mus.hidden = true; return; }
+    load(i+1, !muted && started);
+  });
+  function toggle(){ if(a.paused) play(); else { a.pause(); muted = true; } }
+  $('mPlay').onclick = toggle; $('pToggle').onclick = toggle;
+  $('pNext').onclick = () => load(i+1, true); $('pPrev').onclick = () => load(i-1, true);
+  const open = v => panel.classList.toggle('open', v);
+  $('mList').onclick = () => open(!panel.classList.contains('open'));
+  $('pClose').onclick = () => open(false);
+  addEventListener('keydown', e => { if(e.key==='Escape') open(false); });
+  [mus, panel].forEach(el => el.addEventListener('pointerdown', e => e.stopPropagation()));
+  addEventListener('pointerdown', () => { if(!started && !muted) play(); });
+  load(0, false);
+})();
+show('menu');
+</script>
+</body>
+</html>
